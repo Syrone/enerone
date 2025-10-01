@@ -5786,20 +5786,28 @@ document.querySelectorAll('input[data-bs-toggle="collapse-checked"]')?.forEach(t
     radio.addEventListener('change', updateCollapse);
   });
 });
+let currentDropdown = null;
+let hideTimeout;
 document.querySelectorAll('[data-bs-toggle="dropdown-hover"]').forEach(trigger => {
   const dropdown = new bootstrap.Dropdown(trigger, {
     autoClose: true
   });
   const dropdownParent = trigger.closest(".dropdown");
-  let hideTimeout;
   if (!dropdownParent) return;
   dropdownParent.addEventListener("mouseenter", () => {
     clearTimeout(hideTimeout);
+    if (currentDropdown && currentDropdown !== dropdown) {
+      currentDropdown.hide();
+    }
     dropdown.show();
+    currentDropdown = dropdown;
   });
   dropdownParent.addEventListener("mouseleave", () => {
     hideTimeout = setTimeout(() => {
       dropdown.hide();
+      if (currentDropdown === dropdown) {
+        currentDropdown = null;
+      }
     }, 200);
   });
 });
