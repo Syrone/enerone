@@ -103,8 +103,6 @@
   list-style: none;
 
   .nav-link {
-    --#{$prefix}btn-active-color: var(--#{$prefix}navbar-active-color);
-
     display: inline-flex;
     align-items: center;
     padding: var(--#{$prefix}nav-link-padding-y) var(--#{$prefix}nav-link-padding-x);
@@ -137,6 +135,17 @@
       right: 0;
       bottom: 0;
       left: 0;
+    }
+
+    @media(hover: hover) {
+
+      &:is(:hover, :focus-visible) {
+
+        &::after {
+          background-color: var(--#{$prefix}btn-active-color);
+          background-image: none;
+        }
+      }
     }
 
     &.active {

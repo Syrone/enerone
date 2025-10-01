@@ -2,8 +2,23 @@ import browserSync from 'browser-sync';
 import webpackStream from 'webpack-stream';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
+import path from 'path';
+import fs from 'fs';
+
+function getEntryPoints(dir) {
+  const files = fs.readdirSync(dir)
+    .filter(file => file.endsWith('.js') && !file.startsWith('_')) // ← добавили исключение
+    .reduce((entries, file) => {
+      const name = path.basename(file, '.js');
+      entries[name] = path.resolve(dir, file);
+      return entries;
+    }, {});
+  return files;
+}
 
 export const scriptsBackend = () => {
+  const entry = getEntryPoints(app.paths.base.src + '/js');
+
   return app.gulp.src(app.paths.srcMainJs)
     .pipe(plumber(
       notify.onError({
@@ -13,8 +28,9 @@ export const scriptsBackend = () => {
     ))
     .pipe(webpackStream({
       mode: 'development',
+      entry,
       output: {
-        filename: 'main.js',
+        filename: '[name].js',
       },
       module: {
         rules: [{

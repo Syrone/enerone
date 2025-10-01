@@ -165,6 +165,21 @@
         $active-color: $white,
         $disabled-color: $white,
       );
+
+      &.btn-border-gradient {
+        @include button-variant(
+          $value,
+          $value,
+          $color: $white,
+          $hover-background: transparent,
+          $hover-border: $gradient-success-to-primary,
+          $hover-color: $body-color,
+          $active-background: transparent,
+          $active-border: $gradient-success-to-primary,
+          $active-color: $body-color,
+          $disabled-color: $white,
+        );
+      }
     } @else if $color == "success" {
       @include button-variant(
         $value,
@@ -178,6 +193,21 @@
         $active-color: $white,
         $disabled-color: $white,
       );
+
+      &.btn-border-gradient {
+        @include button-variant(
+          $value,
+          $value,
+          $color: $white,
+          $hover-background: transparent,
+          $hover-border: $gradient-success-to-primary,
+          $hover-color: $body-color,
+          $active-background: transparent,
+          $active-border: $gradient-success-to-primary,
+          $active-color: $body-color,
+          $disabled-color: $white,
+        );
+      }
     } @else if $color == "info" {
       @include button-variant(
         $value,
@@ -209,22 +239,33 @@
       );
 
       --#{$prefix}btn-border-color: #c5c5c5;
+    } @else if $color == "primary" {
+      @include button-outline-variant(
+        $color: $white,
+        $color-hover: $body-bg,
+        $active-background: $value,
+        $active-border: $value,
+        $active-color: $white,
+      );
+
+      &.btn-border-gradient {
+        @include button-outline-variant(
+          $color: $body-color,
+          $color-hover: $white,
+          $active-background: $value,
+          $active-border: $value,
+          $active-color: $white,
+        );
+
+        --#{$prefix}btn-bg: var(--#{$prefix}body-bg);
+        --#{$prefix}btn-border-color: #{$gradient-success-to-primary};
+      }
     } @else {
       @include button-outline-variant($value);
     }
   }
 }
 // scss-docs-end btn-variant-loops
-
-.btn-outline-success-to-primary {
-  --#{$prefix}btn-bg: var(--#{$prefix}body-bg);
-  --#{$prefix}btn-hover-bg: var(--#{$prefix}primary);
-  --#{$prefix}btn-active-bg: var(--#{$prefix}body-bg);
-
-  --#{$prefix}btn-border-color: var(--#{$prefix}gradient-success-to-primary);
-  --#{$prefix}btn-hover-border-color: var(--#{$prefix}primary);
-  --#{$prefix}btn-active-border-color: var(--#{$prefix}gradient-success-to-primary);
-}
 
 
 
@@ -419,10 +460,32 @@
   }
 }
 
-.btn-link--black {
+.btn-link--regular {
+  --#{$prefix}btn-font-weight: 400;
   --#{$prefix}btn-color: #{$body-color};
   --#{$prefix}btn-hover-color: var(--#{$prefix}success);
   --#{$prefix}btn-active-color: var(--#{$prefix}success);
+
+  @media (hover: hover) {
+
+    &:hover,
+    &:focus-visible {
+      text-shadow:
+        0.025em 0 currentColor,
+        -0.025em 0 currentColor,
+        0 0.025em currentColor,
+        0 -0.025em currentColor;
+    }
+  }
+
+  &.active,
+  &.show {
+    text-shadow:
+      0.025em 0 currentColor,
+      -0.025em 0 currentColor,
+      0 0.025em currentColor,
+      0 -0.025em currentColor;
+  }
 }
 
 
@@ -446,6 +509,14 @@
   @include media-breakpoint-up(lg) {
     --#{$prefix}btn-icon-size: 2.5rem;
   }
+}
+
+.btn-inline {
+  --#{$prefix}btn-font-size: inherit;
+  --#{$prefix}btn-line-height: inherit;
+
+  display: inline;
+  vertical-align: inherit;
 }
 
 

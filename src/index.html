@@ -5,9 +5,12 @@
 
 <body class="page-body">
   @include('partials/offcanvases.html')
+  @include('partials/modals.html')
 
   <div class="site-container">
-    @include('partials/header.html')
+    @include('partials/header.html', {
+      auth: false
+    })
 
     <main class="main">
       <section class="section hero">
@@ -22,7 +25,9 @@
                     Получите уникальные условия на покупку «зеленой» энергии
                   </h1>
                   <div>
-                    <button type="button" class="btn btn-base btn-primary">
+                    <button type="button" class="btn btn-base btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#modal-callback">
                       <span>Оставить заявку</span>
                     </button>
                   </div>
@@ -72,13 +77,13 @@
             </h2>
 
             <nav class="navbar-nav navbar-nav--sort">
-              <a class="btn btn-link btn-link--black nav-link active" href="#">
+              <a class="btn btn-link btn-link--regular nav-link" href="#">
                 Все
               </a>
-              <a class="btn btn-link btn-link--black nav-link" href="#">
+              <a class="btn btn-link btn-link--regular nav-link" href="#">
                 ИП и малый бизнес
               </a>
-              <a class="btn btn-link btn-link--black nav-link" href="#">
+              <a class="btn btn-link btn-link--regular nav-link" href="#">
                 Средний и крупный бизнес
               </a>
             </nav>

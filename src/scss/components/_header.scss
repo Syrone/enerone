@@ -6,6 +6,10 @@
   left: 0;
   z-index: #{$zindex-fixed};
 
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+  }
+
   &::after {
     content: '';
     display: block;
@@ -72,7 +76,7 @@
     }
 
     img {
-      max-width: 11.25rem;
+      max-width: 8.75rem;
 
       @include media-breakpoint-up(lg) {
         width: 100%;
