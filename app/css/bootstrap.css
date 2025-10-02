@@ -4198,12 +4198,9 @@ textarea.form-control-lg {
   text-decoration: none;
 }
 @media (hover: hover) {
-  .btn-link:hover {
+  .btn-link:hover, .btn-link:focus-visible {
     color: var(--bs-btn-hover-color);
   }
-}
-.btn-link:focus-visible {
-  color: var(--bs-btn-color);
 }
 
 .btn-link--regular {
@@ -4211,14 +4208,6 @@ textarea.form-control-lg {
   --bs-btn-color: #000;
   --bs-btn-hover-color: var(--bs-success);
   --bs-btn-active-color: var(--bs-success);
-}
-@media (hover: hover) {
-  .btn-link--regular:hover, .btn-link--regular:focus-visible {
-    text-shadow: 0.025em 0 currentColor, -0.025em 0 currentColor, 0 0.025em currentColor, 0 -0.025em currentColor;
-  }
-}
-.btn-link--regular.active, .btn-link--regular.show {
-  text-shadow: 0.025em 0 currentColor, -0.025em 0 currentColor, 0 0.025em currentColor, 0 -0.025em currentColor;
 }
 
 .btn-icon {

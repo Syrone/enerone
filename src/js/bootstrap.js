@@ -54,6 +54,10 @@ document.querySelectorAll('[data-bs-toggle="dropdown-hover"]').forEach(trigger =
 
   if (!dropdownParent) return
 
+  // Убираем автофокус при открытии
+  bootstrap.Dropdown.prototype._selectMenuItem = function () {}
+  bootstrap.Dropdown.prototype._focusFirstItem = function () {}
+
   dropdownParent.addEventListener("mouseenter", () => {
     clearTimeout(hideTimeout)
 

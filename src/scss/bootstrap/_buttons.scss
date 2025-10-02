@@ -449,14 +449,10 @@
       text-decoration: $link-hover-decoration;
     }
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: var(--#{$prefix}btn-hover-color);
     }
-  }
-
-
-  &:focus-visible {
-    color: var(--#{$prefix}btn-color);
   }
 }
 
@@ -465,27 +461,6 @@
   --#{$prefix}btn-color: #{$body-color};
   --#{$prefix}btn-hover-color: var(--#{$prefix}success);
   --#{$prefix}btn-active-color: var(--#{$prefix}success);
-
-  @media (hover: hover) {
-
-    &:hover,
-    &:focus-visible {
-      text-shadow:
-        0.025em 0 currentColor,
-        -0.025em 0 currentColor,
-        0 0.025em currentColor,
-        0 -0.025em currentColor;
-    }
-  }
-
-  &.active,
-  &.show {
-    text-shadow:
-      0.025em 0 currentColor,
-      -0.025em 0 currentColor,
-      0 0.025em currentColor,
-      0 -0.025em currentColor;
-  }
 }
 
 
