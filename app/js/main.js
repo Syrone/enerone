@@ -20350,7 +20350,7 @@ const initCalcForm = (form, data) => {
     }
   });
 };
-fetch('../calc.json').then(res => res.ok ? res.json() : Promise.reject(`Ошибка загрузки JSON: ${res.status}`)).then(data => {
+fetch('./calc.json').then(res => res.ok ? res.json() : Promise.reject(`Ошибка загрузки JSON: ${res.status}`)).then(data => {
   document.querySelectorAll('[data-form="calc-savings"]').forEach(form => {
     initCalcForm(form, data);
   });
